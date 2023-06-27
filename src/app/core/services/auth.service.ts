@@ -5,6 +5,8 @@ import { Observable, tap } from 'rxjs';
 import { AuthLoginRequestDto } from '../dto/authLoginRequestDto';
 import { AuthLoginResponseDto } from '../dto/authLoginResponseDto';
 import { TokenService } from './token.service';
+import { RegisterRequestDto } from '../dto/registerRequestDto';
+import { RegisterResponseDto } from '../dto/registerResponseDto';
 
 
 @Injectable({
@@ -26,5 +28,9 @@ export class AuthService {
         this.tokenService.saveToken(response.jwt);
       })
       );
+   }
+
+   public register(registerRequestDto: RegisterRequestDto): Observable<RegisterResponseDto>{
+      return this.http.post<RegisterResponseDto>(`${this.apiUrl}/auth/register`,registerRequestDto);
    }
 }

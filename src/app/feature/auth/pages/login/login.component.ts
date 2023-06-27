@@ -6,6 +6,8 @@ import { AuthLoginRequestDto } from 'src/app/core/dto/authLoginRequestDto';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { lastValueFrom } from 'rxjs';
 import { TokenService } from 'src/app/core/services/token.service';
+import { ErrorsForm } from 'src/app/core/enums/ErrorsForm';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -48,7 +50,13 @@ export class LoginComponent extends AppBaseComponent {
       //console.log(localStorage.getItem("token"));
       //this.loginForm.get('email').setValue('prueba@hotmail.com');
     }else{
-      alert('Hay errores en el formulario');
+      
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Hay errores en el formulario, reviselo por favor'
+      });
+
       console.log(this.getAllErrorsForm(this.loginForm));
       this.loginForm.markAllAsTouched();
     }
@@ -62,9 +70,9 @@ export class LoginComponent extends AppBaseComponent {
 
       if(this.isTouchedField(this.loginForm,field)){
         if(this.loginForm.get(field).hasError('required')){
-          message = 'El campo es requerido';
+          message = ErrorsForm.REQUIRED;
         }else if(this.loginForm.get(field).hasError('email')){
-          message = 'Requiere el formato de email';
+          message = ErrorsForm.EMAIL_FORMAT;
         }
       }
       return message;

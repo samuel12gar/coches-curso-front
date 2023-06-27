@@ -8,15 +8,21 @@ import { GuardPruebaService } from '../core/services/guard-prueba.service';
 const routes: Routes = [
   {
     path:"autenticacion",
-    canActivate: [()=> inject(GuardPruebaService).canActiveWithAuth()]
+    canActivate: [()=> inject(GuardPruebaService).canActiveWithAuth()],
     //canActivate: [AuthWithGuard],
     loadChildren: ()=> import("./auth/auth.module").then(a=>a.AuthModule)
   },
   {
     path:"portafolio",
-    canActivate: [()=> inject(GuardPruebaService).canActiveWithoutAuth()]
+    canActivate: [()=> inject(GuardPruebaService).canActiveWithoutAuth()],
     //canActivate: [AuthWithoutGuard],
     loadChildren: ()=> import("./home/home.module").then(h=>h.HomeModule)
+  },
+  {
+    path:"admin",
+    canActivate: [()=> inject(GuardPruebaService).canActiveWithRolAdmin()],
+    //canActivate: [AuthWithoutGuard],
+    loadChildren: ()=> import("./admin/admin.module").then(a=>a.AdminModule)
   }
 ];
 

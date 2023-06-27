@@ -1,0 +1,73 @@
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right" style="
+              background: hsla(0, 0%, 100%, 0.55);
+              backdrop-filter: blur(30px);
+              ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <form role="form" [formGroup]="infoBasicForm">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="brandCarId">Codigo marca coche</label>
+                  <input formControlName="brandCarId" type="text" id="brandCarId" 
+                  placeholder="Codigo marca coche" class="form-control"
+                  />
+                </div>
+  
+                
+                <div class="form-outline mb-4">
+                  <label class="form-label" for="reference"  >Referencia</label>
+                  <input formControlName="reference" type="text" id="reference"
+                   placeholder="Referencia" class="form-control" 
+                   />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="price"  >Precio</label>
+                    <input formControlName="price" type="text" id="price"
+                     placeholder="Precio" class="form-control" 
+                     />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="modelYear"  >Año modelo</label>
+                    <input formControlName="modelYear" type="text" id="modelYear"
+                     placeholder="Año modelo" class="form-control" 
+                     />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="category"  >Categoria</label>
+                    <input formControlName="category" type="text" id="category"
+                     placeholder="Categoria" class="form-control" 
+                     />
+                  </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+  
+       
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+
